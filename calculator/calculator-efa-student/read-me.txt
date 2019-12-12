@@ -1,0 +1,37 @@
+Before starting make sure you do a npm install
+
+
+App.js
+1. Import Exress in app.js
+
+2. Create variable for express
+
+3. Import body-parser
+
+4. Go to Controller Folder Section and come back to step 5
+
+5. welcome back from the Controller Folder
+
+6. import the controller
+
+7. create routes (app.use)
+
+
+Controller Folder
+1. Create 4 controller files in the foler controllers
+    a) add-controller
+    b) subtract-controller
+    c) multiply-controller
+    d) divide-controller
+
+2. in each of the controllers
+    - import express
+    - use express router
+    - create router endpoint
+    - have your route function be prepared to handle the following input from postman
+    - {"data":{
+        "number1": "5",
+        "number2": "35"
+        }
+        }
+    - send response back with the answer
