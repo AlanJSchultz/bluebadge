@@ -9,7 +9,7 @@ module.exports = function (req, res, next) {
         next();
     } else {
         var sessionToken = req.headers.authorization;
-        console.log(sessionToken)
+        console.log(sessionToken);
         sessionToken ? verifyToken() : res.status(403).send({
             auth: false,
             message: 'No Token Provided'

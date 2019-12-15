@@ -7,6 +7,37 @@ var User = sequelize.import('../models/user.js');
 var jwt =require("jsonwebtoken");
 var bcrypt = require("bcryptjs");
 
+// create a new user
+router.post('/', function (req, res) {
+    
+    var userName = req.body.user.username;
+    var password = req.body.user.password;
+
+    User.create({
+            username: userName,
+            passwordhash: bcrypt.hashSync(password, 10)
+        })
+        .then(
+
+            function createSuccess(user) {
+                var token = jwt.sign({
+                    id: user.id
+                }, process.env.JWT_SECRET, {
+                    expiresIn: 60 * 60 * 24
+                });
+                res.json({
+                    user: user,
+                    message: 'created',
+                    sessionToken: token
+                });
+            },
+            function creareError(err) {
+                res.send(500, err.message);
+            }
+        );
+});
+
+
 router.post('/createuser', function (req, res) {
     // var userName = "fake@fake.com";
     // var password = "ThisIsAPassword";
