@@ -3,14 +3,14 @@
 var express = require('express');
 var router = express.Router();
 var sequelize = require('../db');
-var Log = sequelize.import('../models/user.js');
+var User = sequelize.import('../models/user.js');
 var jwt = require("jsonwebtoken");
 var bcrypt = require("bcryptjs");
 
 // login an exisiting user
 router.post("/", function (req, res) {
     let email = req.body.user.username;
-    let password = req.body.user.username;
+    let password = req.body.user.password;
 
     User.findOne({
         where:{ username: email }

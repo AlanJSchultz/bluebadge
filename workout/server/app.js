@@ -30,11 +30,11 @@ app.use(require('./middleware/header')); // has to be after the app.use of bodyp
 // });
 
 app.use('/api/user', user);
-
 app.use('/api/login', login);
 app.use('/test-controller', test);  // var test has actual location
 
 app.use(require('./middleware/validate-session'));
+// anything after MiddleWare Validation Session is protected routes and will need a session token
 app.use('/api/log', log);
 app.use("/authtest", authTest);
 

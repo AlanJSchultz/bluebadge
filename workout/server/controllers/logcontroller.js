@@ -3,10 +3,60 @@
 var express = require('express');
 var router = express.Router();
 var sequelize = require('../db');
-var Log = sequelize.import('../models/log.js');
-var jwt = require("jsonwebtoken");
-var bcrypt = require("bcryptjs");
+var User = sequelize.import('../models/user.js');
 
+var LogModel = sequelize.import('../models/log.js');
+
+
+// create a workout log 
+router.post('/', function (req, res) {
+    var owner = req.user.id;
+    var description = req.body.description.item;
+    var definition = req.body.definition.item;
+    var result = req.body.result.item;
+
+    LogModel.create({
+        description: description,
+        definition: definition,
+        result: result,
+        owner: owner
+    }).then(
+        function createSuccess(description) {
+            res.json({
+                description: description,
+                definition: definition,
+                result: result
+            });
+        },
+        function createError(err) {
+            res.send(500, err.message);
+        }
+    );
+});
+
+
+// gets all logs for an individual
+router.get('/', function (req, res) {
+    
+});
+
+
+// gets individual logs by id for an individual user
+router.get('/:id', function (req, res) {
+    
+});
+
+
+// allows individual logs to be updated by a user
+router.put('/:id', function (req, res) {
+    
+});
+
+
+// allows individual logs to be deleted by a user
+router.delete('/:id', function (req, res) {
+    
+});
 
 
 module.exports = router;

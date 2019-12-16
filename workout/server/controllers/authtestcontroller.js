@@ -38,7 +38,7 @@ router.post('/create', function (req,res) {
         function createSuccess(authtestdata) {
             res.json({
                 authtestdata: authtestdata
-            })
+            });
         },
         function createError(err) {
             res.send(500, err.message);
