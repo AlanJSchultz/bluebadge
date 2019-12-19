@@ -11,9 +11,9 @@ var LogModel = sequelize.import('../models/log.js');
 // create a workout log 
 router.post('/', function (req, res) {
     var owner = req.user.id;
-    var description = req.body.description.item;
-    var definition = req.body.definition.item;
-    var result = req.body.result.item;
+    var description = req.body.log.description;
+    var definition = req.body.log.definition;
+    var result = req.body.log.result;
 
     LogModel.create({
         description: description,

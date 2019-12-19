@@ -1,15 +1,15 @@
+//jshint esversion:8
+
 import React from 'react';
-// import logo from './logo.svg';
 import './App.css';
-import Example from './components/example';
-import Image from './components/image';
+import Signup from './components/auth/Signup';
 
 function App() {
   return (    
     <div className="App">
-      <Example></Example>
-      <Image />
+      <Signup username='username' />
     </div>
+
   );
 }
 
